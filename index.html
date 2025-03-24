@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Merger</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.16.0/pdf-lib.min.js"></script>
+</head>
+
+<body class="bg-gray-900 text-gray-200 flex items-center justify-center min-h-screen transition-colors duration-300">
+    
+    <div id="main-container"
+        class="bg-gray-800 p-6 rounded-2xl shadow-2xl w-96 text-center relative transition-colors duration-300">
+        <div class="flex flex-row justify-center items-center mb-4 p-2 rounded-lg">
+            <h2 class="text-4xl font-bold m-4">PDF Merger</h2>
+            <button id="theme-toggle" class="bg-gray-700 text-white text-2xl p-2 rounded-full rounded">🌙</button>
+        </div>
+
+        <div id="drop-area"
+            class="border-2 border-dashed border-gray-500 p-6 rounded-lg text-center cursor-pointer dark:hover:bg-gray-500  transition">
+            <p class="text-black-900 ">Drag & Drop PDFs here or Click to Select</p>
+            <input type="file" id="file-input" multiple accept="application/pdf" class="hidden">
+        </div>
+
+        <ul id="file-list" class="mt-4 text-sm text-gray-300"></ul>
+        <button id="merge-btn"
+            class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg mt-4 w-full transition">Merge
+            PDFs</button>
+        <p id="status" class="text-center text-gray-400 mt-2"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
