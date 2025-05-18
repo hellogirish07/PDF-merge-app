@@ -1,36 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Made By GK with Fun 😊 -->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Merge PDF files instantly and securely in your browser. No uploads. 100% privacy.">
+    <meta name="author" content="GK">
     <title>PDF Merger</title>
+    <link rel="stylesheet" href="style.css" class="css">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.16.0/pdf-lib.min.js"></script>
 </head>
 
-<body class="bg-gray-900 text-gray-200 flex items-center justify-center min-h-screen transition-colors duration-300">
-    
+<body
+    class="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-gray-200 min-h-screen transition-colors duration-300">
+
+    <!-- Navbar Start -->
+    <nav class="sticky-nav">
+        <div class="nav-container">
+            <div class="flex items-center justify-between w-full">
+                <span
+                    class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">PDF
+                    Merger</span>
+                <div class="nav-links">
+                    <a href="#about" class="hover:text-blue-400 transition">About</a>
+                    <a href="#features" class="hover:text-blue-400 transition">Features</a>
+                    <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
+                </div>
+                <div id="hamburger" class="hamburger">
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                    <div class="hamburger-line"></div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <a href="#about" class="hover:text-blue-400 transition">About</a>
+        <a href="#features" class="hover:text-blue-400 transition">Features</a>
+        <a href="#contact" class="hover:text-blue-400 transition">Contact</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="text-center py-24 px-6">
+        <h1 class="text-6xl font-extrabold mb-6 leading-tight">
+            <span class="bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+                Merge Your PDFs
+            </span>
+        </h1>
+        <p class="text-gray-300 text-xl mb-8 max-w-2xl mx-auto">
+            Combine multiple PDF files instantly in your browser. No uploads, no watermarks, and no registration
+            required.
+        </p>
+        <a href="#main-container"
+            class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-4 px-8 rounded-lg shadow-lg transition transform hover:scale-105">
+            Try it Now
+        </a>
+    </section>
+
     <div id="main-container"
-        class="bg-gray-800 p-6 rounded-2xl shadow-2xl w-96 text-center relative transition-colors duration-300 md:mx-auto">
-        <div class="flex flex-row justify-center items-center mb-4 p-2 rounded-lg">
-            <h2 class="text-4xl font-bold m-4">PDF Merger</h2>
-            <button id="theme-toggle" class="bg-gray-700 text-white text-2xl p-2 rounded-full rounded">🌙</button>
+        class="bg-black/30 backdrop-blur-lg p-4 sm:p-6 md:p-10 rounded-2xl shadow-2xl w-[100%] sm:w-[28rem] md:w-[32rem] text-center relative transition-colors duration-300 mx-auto border border-white/10">
+        <div class="flex flex-row justify-center items-center mb-4 sm:mb-6 md:mb-8">
+            <h2
+                class="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                PDF Merger</h2>
         </div>
 
         <div id="drop-area"
-            class="border-2 border-dashed border-gray-500 p-6 rounded-lg text-center cursor-pointer dark:hover:bg-gray-500  transition">
-            <p class="text-black-900 ">Drag & Drop PDFs here or Click to Select</p>
-            <input type="file" id="file-input" multiple accept="application/pdf" class="hidden">
+            class="drop-area p-4 sm:p-6 md:p-10 rounded-xl text-center cursor-pointer mb-4 sm:mb-6 md:mb-8">
+            <p class="text-gray-300 text-base sm:text-lg">Drag & Drop PDFs here or Click to Select</p>
+            <input type="file" id="file-input" multiple accept="application/pdf" class="hidden" title="Select PDF files"
+                aria-label="Select PDF files to merge">
         </div>
 
-        <ul id="file-list" class="mt-4 text-sm text-gray-300"></ul>
+        <ul id="file-list" class="mt-4 sm:mt-6 text-sm text-gray-300 space-y-2 sm:space-y-3"></ul>
         <button id="merge-btn"
-            class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg mt-4 w-full transition">Merge
-            PDFs</button>
-        <p id="status" class="text-center text-gray-400 mt-2"></p>
+            class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-4 sm:px-6 md:px-8 py-3 sm:py-4 rounded-xl mt-4 sm:mt-6 md:mt-8 w-full transition transform hover:scale-105 text-base sm:text-lg font-semibold">
+            Merge PDFs
+        </button>
+        <p id="status" class="text-center text-gray-400 mt-4 sm:mt-6 text-sm sm:text-base"></p>
     </div>
 
+    <!-- About Us Section -->
+    <section id="about" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 text-white">
+        <div class="max-w-6xl mx-auto">
+            <h2
+                class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                About Us
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-12 items-center">
+                <div class="space-y-4 sm:space-y-6">
+                    <h3 class="text-xl sm:text-2xl font-semibold text-blue-400">Our Mission</h3>
+                    <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                        We're on a mission to simplify PDF management for everyone. Our browser-based PDF Merger tool
+                        makes it easy to combine multiple PDF files without compromising on privacy or security.
+                    </p>
+                    <h3 class="text-xl sm:text-2xl font-semibold text-purple-400">Why Choose Us?</h3>
+                    <ul class="space-y-2 sm:space-y-3 text-gray-300 text-sm sm:text-base">
+                        <li class="flex items-center space-x-2">
+                            <span class="text-green-400">✓</span>
+                            <span>100% Browser-based - No downloads required</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <span class="text-green-400">✓</span>
+                            <span>Complete privacy - Files never leave your device</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <span class="text-green-400">✓</span>
+                            <span>Lightning-fast processing</span>
+                        </li>
+                        <li class="flex items-center space-x-2">
+                            <span class="text-green-400">✓</span>
+                            <span>Free to use - No hidden costs</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-2 gap-4">
+                    <div class="feature-card p-4 sm:p-6 rounded-xl text-center card-hover">
+                        <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">🎯</div>
+                        <h4 class="text-base sm:text-lg font-semibold mb-2">Precision</h4>
+                        <p class="text-gray-400 text-xs sm:text-sm">Accurate PDF merging with perfect page order</p>
+                    </div>
+                    <div class="feature-card p-4 sm:p-6 rounded-xl text-center card-hover">
+                        <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">🔒</div>
+                        <h4 class="text-base sm:text-lg font-semibold mb-2">Security</h4>
+                        <p class="text-gray-400 text-xs sm:text-sm">Your files stay private and secure</p>
+                    </div>
+                    <div class="feature-card p-4 sm:p-6 rounded-xl text-center card-hover">
+                        <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">⚡</div>
+                        <h4 class="text-base sm:text-lg font-semibold mb-2">Speed</h4>
+                        <p class="text-gray-400 text-xs sm:text-sm">Lightning-fast processing</p>
+                    </div>
+                    <div class="feature-card p-4 sm:p-6 rounded-xl text-center card-hover">
+                        <div class="text-3xl sm:text-4xl mb-3 sm:mb-4">💡</div>
+                        <h4 class="text-base sm:text-lg font-semibold mb-2">Simplicity</h4>
+                        <p class="text-gray-400 text-xs sm:text-sm">Easy to use interface</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 text-white text-center" id="features">
+        <h2
+            class="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            Features You'll Love</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
+            <div class="feature-card p-4 sm:p-6 rounded-xl shadow-lg card-hover">
+                <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">🔒 100% Private</h3>
+                <p class="text-gray-400 text-sm sm:text-base">No file uploads. Merging is done entirely in your browser
+                    for ultimate privacy.</p>
+            </div>
+            <div class="feature-card p-4 sm:p-6 rounded-xl shadow-lg card-hover">
+                <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">⚡ Super Fast</h3>
+                <p class="text-gray-400 text-sm sm:text-base">Merge large PDFs in seconds with our high-performance
+                    browser-based engine.</p>
+            </div>
+            <div class="feature-card p-4 sm:p-6 rounded-xl shadow-lg card-hover">
+                <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">🧩 Drag & Drop</h3>
+                <p class="text-gray-400 text-sm sm:text-base">Upload files effortlessly using our drag & drop zone or
+                    file picker.</p>
+            </div>
+            <div class="feature-card p-4 sm:p-6 rounded-xl shadow-lg card-hover">
+                <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">🌍 Works Everywhere</h3>
+                <p class="text-gray-400 text-sm sm:text-base">Use it on any device with a browser – no installations or
+                    extensions required.</p>
+            </div>
+            <div class="feature-card p-4 sm:p-6 rounded-xl shadow-lg card-hover">
+                <h3 class="text-lg sm:text-xl font-semibold mb-2 ttext-white">🔗 Unlimited Files</h3>
+                <p class="text-gray-400 text-sm sm:text-base">Merge as many PDFs as you want. No limits, no
+                    restrictions.</p>
+            </div>
+            <div class="feature-card p-4 sm:p-6 rounded-xl shadow-lg card-hover">
+                <h3 class="text-lg sm:text-xl font-semibold mb-2 text-white">💸 Completely Free</h3>
+                <p class="text-gray-400 text-sm sm:text-base">No subscriptions, no trials. Just a fast, reliable PDF
+                    merger at no cost.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 sm:py-16 md:py-20 px-4 sm:px-6 text-white">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2
+                class="text-3xl sm:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                Contact Us</h2>
+            <p class="text-gray-400 mb-8 text-sm sm:text-base">
+                Have a question, feature request, or just want to say hi? We'd love to hear from you.
+            </p>
+            <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4 sm:space-y-6 text-left">
+                <input type="hidden" name="access_key" value="33d44239-b74e-45c4-be8a-5c9f3feaab1d">
+                <input type="hidden" name="subject" value="New Contact Form Submission - PDF Merger">
+                <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                
+                <div>
+                    <label for="name" class="block mb-2 text-sm">Name</label>
+                    <input type="text" id="name" name="name"
+                        class="w-full p-3 rounded-lg bg-black/30 text-white border border-white/10 focus:ring-2 focus:ring-purple-500 outline-none text-sm sm:text-base"
+                        placeholder="Enter your name" required>
+                </div>
+                <div>
+                    <label for="email" class="block mb-2 text-sm">Email</label>
+                    <input type="email" id="email" name="email"
+                        class="w-full p-3 rounded-lg bg-black/30 text-white border border-white/10 focus:ring-2 focus:ring-purple-500 outline-none text-sm sm:text-base"
+                        placeholder="Enter your email" required>
+                </div>
+                <div>
+                    <label for="message" class="block mb-2 text-sm">Message</label>
+                    <textarea id="message" name="message" rows="5"
+                        class="w-full p-3 rounded-lg bg-black/30 text-white border border-white/10 focus:ring-2 focus:ring-purple-500 outline-none text-sm sm:text-base"
+                        placeholder="Enter your message" required></textarea>
+                </div>
+                <button type="submit"
+                    class="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg transition transform text-sm sm:text-base">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black/30 backdrop-blur-lg text-gray-400 text-sm py-6 text-center">
+        <p>&copy; 2025 PDF Merger. All rights reserved.</p>
+        <div class="flex justify-center space-x-4 mt-2">
+            <a href="#" class="hover:text-white transition">Privacy Policy</a>
+            <a href="#" class="hover:text-white transition">Terms of Service</a>
+            <a href="mailto:support@example.com" class="hover:text-white transition">Contact</a>
+        </div>
+    </footer>
+
+    <script src="https://web3forms.com/client/script.js" async defer></script>
     <script src="script.js"></script>
 </body>
 
